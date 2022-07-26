@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>CM3010 MidTerm: felixreynoso</title>    
+    <script src="js/plotly.js"></script>
+</head>
+
+<body class="jumbotron">
+    <h1 class="display-4">Confirmed New Cases of COVID-19</h1> 
+    <hr class="my-4">
+
+    <form action="/" method="GET">
+        <div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Select Region</label>
+                </div>
+                <select class="custom-select" id="region" name='region'>
+                    <option selected value="Global">Global</option>
+                    <% for(var i=0; i<countries.length; i++) {%>
+                        <% if (countries[i] == region ) {%> 
+                            <option value="<%= countries[i] %>" selected> <%= countries[i] %> </option>
+                        
+                        <%} else { %>
+                            <option value="<%= countries[i] %>" > <%= countries[i] %> </option>
+                        <% } %>
+                    <% } %>
+                </select>
+            </div>
+        
+        
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Select Time Frame</label>
+                </div>
+                <select class="custom-select" id="timeFrame" name='timeFrame'>
+                    <option selected value="1">Last 24 hours</option>
+                    <<% for(var i=0; i < timeFrames.length; i++) {%>
+                        <% if (timeFrames[i][0] == timeFrame ) {%> 
+                            <option value="<%= timeFrames[i][0] %>" selected> <%= timeFrames[i][1] %> </option>
+                        
+                        <%} else { %>
+                            <option value="<%= timeFrames[i][0] %>" > <%= timeFrames[i][1] %> </option>
+                        <% } %>
+                    <% } %>
+                </select>
+            </div>
+            <input type="submit" class="btn btn-primary"value="Plot Data">
+        </form>
+
+        <hr class="my-4">
+
+        <div style="width:800px;height:500px;" id='plotCanvas'></div>
+
+        <p><em>This project makes use of the one of the covid datasets published by John hopkins university under
+        the Creative Commons Attribution 4.0 license, Copyright Johns Hopkins University 2020.
+        "COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University"</em></p>
+
+    </div>
+
+</body>
+<script>      
+        var data = [{
+                    y: "<%= data.x %>".split(','),
+                    type: 'bar'
+                }];
+
+        Plotly.newPlot('plotCanvas', data, {title: `Total Confirmed Covid Cases from: "<%= data.from %>"  to: "<%= data.to %>"`});
+</script>
+
+</html>
