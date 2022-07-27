@@ -46,12 +46,14 @@ app.listen(port, () => {
 //     database: "covid"
 // });
 const con = mysql.createConnection({
-    host: "127.0.0.1",
-    user: "test",
-    password: "reynosociprian",
-    database: "covid",
-
+    // module.exports = {
+    HOST: "us-cdbr-east-06.cleardb.net",
+    USER: "bee5c0598136c7",
+    PASSWORD: "77123471",
+    DB: "heroku_2651fa20946251c"
+    //   };
 });
+
 con.connect(function (err) {
     if (err) throw err;
     console.log("Connected!");
