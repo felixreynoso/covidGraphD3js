@@ -38,7 +38,7 @@ app.get('/', function (req, res) {
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
-
+// mysql://bee5c0598136c7:77123471@us-cdbr-east-06.cleardb.net/heroku_2651fa20946251c?reconnect=true
 // const con = mysql.createConnection({
 //     host: "localhost",
 //     user: "root",
@@ -54,6 +54,7 @@ const con = mysql.createConnection({
     //   };
 });
 
+// mysql --host=us-cdbr-east-06.cleardb.net--user=ee5c0598136c7 --password=77123471 --reconnect heroku_2651fa20946251c
 con.connect(function (err) {
     if (err) throw err;
     console.log("Connected!");

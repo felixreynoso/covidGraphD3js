@@ -1,5 +1,5 @@
 {
-  "name": "midterm",
+  "name": "mysqltest",
   "version": "1.0.0",
   "description": "midterm",
   "main": "index.js",
@@ -16,5 +16,6 @@
     "start": "node index.js"
   },
   "author": "felixreynoso",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {}
 }
